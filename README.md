@@ -12,14 +12,14 @@ A full width bottom button for mobile.
     <link rel="import" href="../iron-demo-helpers/demo-snippet.html">
     <link rel="import" href="../bottom-button.html">
   <next-code-block></next-code-block>
-  <template></template>
+  </template>
 </custom-element-demo>
 ```
  -->
  
 ```html
-    <bottom-button>Add to Cart</bottom-button>
     <sample-content size="10"></sample-content>
+    <bottom-button>Add to Cart</bottom-button>
 ```
 
 ## Installation
