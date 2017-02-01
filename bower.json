@@ -24,7 +24,6 @@
   },
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
-    "bottom-nav": "greenyouse/bottom-nav#^0.2.0",
     "paper-button": "PolymerElements/paper-button#^1.0.14"
   },
   "devDependencies": {

@@ -7,10 +7,10 @@ A full width bottom button for mobile.
 <custom-element-demo>
   <template>
     <script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
-    <link rel="import" href="../app-layout/demo/sample-content.html">
     <link rel="import" href="../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../iron-demo-helpers/demo-snippet.html">
     <link rel="import" href="bottom-button.html">
+    <link rel="import" href="/demo/sample-content.html">
   <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
