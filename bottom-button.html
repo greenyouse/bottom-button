@@ -1,109 +1,114 @@
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../paper-ripple/paper-ripple.html">
+<link rel="import" href="../paper-styles/default-theme.html">
 <link rel="import" href="../polymer/polymer.html">
-
-<!--
-`bottom-button` is a full width button for mobile. This is typically used as a
-call-to-action button when viewing some inventory on the screen.
-
-It may be either monochrome or have an inner border. By default the monochrome
-styling is used. The inner border button may be better for conveying a less
-urgent message.
-
-Example:
-
-     <bottom-button>Add to Cart</bottom-button>
-     <bottom-button border>Invite Friends</bottom-button>
-
-Custom property | Description | Default
-----------------|-------------|----------
-`--bottom-button` | Mixin applied to the button | `{}`
-`--bottom-button-background-color` | Background color of the button | `--accent-color`
-`--bottom-button-text-color` | Color of the text for monochrome | `--dark-theme-text-color`
-`--bottom-button-inner-background` | Background color of the inner border button | `--light-theme-background-color`
-
-@demo demo/index.html
--->
 
 <dom-module id="bottom-button">
   <template>
-    <style is="custom-style">
-      :host {
-        display: block;
+    <custom-style>
+      <style>
+       :host {
+         display: block;
 
-        --paper-button: {
-          border-radius: 0;
-          margin: 0;
-          padding: 0;
-        }
+         --paper-button: {
+           border-radius: 0;
+           margin: 0;
+           padding: 0;
+         }
 
-       @apply(--bottom-button);
-      }
+         @apply --bottom-button;
+       }
 
-     .bar {
-       position: fixed;
-       bottom: 0;
-       left: 0;
-       right: 0;
-     }
+       .bar {
+         position: fixed;
+         bottom: 0;
+         left: 0;
+         right: 0;
+       }
 
-     paper-button {
-       font-weight: 500;
-       height: 64px;
-       width: 100%;
-     }
+       paper-button {
+         font-weight: 500;
+         height: 64px;
+         width: 100%;
+       }
 
-     .monochrome {
-       background-color: var(--bottom-button-background-color, --accent-color);
-       color: var(--bottom-button-text-color, --dark-theme-text-color);
-     }
+       .monochrome {
+         background-color: var(--bottom-button-background-color, var(--accent-color));
+         color: var(--bottom-button-text-color, var(--dark-theme-text-color));
+       }
 
-     .border {
-       background-color: var(--bottom-button-inner-background, --light-theme-background-color);
-       border: 2px solid var(--bottom-button-background-color, --accent-color);
-       border-radius: 0;
-       color: var(--accent-color);
-       height: 49px;
-       margin: 15px;
-       padding: 15px;
-       width: calc(100% - 30px);
-     }
+       .border {
+         background-color: var(--bottom-button-inner-background, var(--light-theme-background-color));
+         border: 2px solid var(--bottom-button-background-color, var(--accent-color));
+         border-radius: 0;
+         color: var(--accent-color);
+         height: 49px;
+         margin: 15px;
+         padding: 15px;
+         width: calc(100% - 30px);
+       }
 
-     .container {
-       background-color: var(--bottom-button-inner-background, --light-theme-background-color);
-     }
+       .container {
+         background-color: var(--bottom-button-inner-background, var(--light-theme-background-color));
+       }
 
-      paper-ripple {
-        color: var(--bottom-button-background-color, --accent-color);
-        z-index: 1;
-      }
-    </style>
+       paper-ripple {
+         color: var(--bottom-button-background-color, var(--accent-color));
+         z-index: 1;
+       }
+      </style>
+    </custom-style>
     <div class="bar">
       <div class="container">
-        <paper-ripple hidden="{{!_setClass(border)}}"></paper-ripple>
+        <paper-ripple hidden$="{{!_setClass(border)}}"></paper-ripple>
         <paper-button class$="{{_setClass(border)}}">
-          <content></content>
+          <slot></slot>
         </paper-button>
       </div>
     </div>
   </template>
 
   <script>
-    Polymer({
+   /**
+    * `bottom-button` is a full width button for mobile. This is typically used as a
+    * call-to-action button when viewing some inventory on the screen.
+    *
+    *  It may be either monochrome or have an inner border. By default the monochrome
+    *  styling is used. The inner border button may be better for conveying a less
+    *  urgent message.
+    *
+    *  Example:
+    *
+    *  <bottom-button>Add to Cart</bottom-button>
+    *  <bottom-button border>Invite Friends</bottom-button>
+    *
+    *  Custom property | Description | Default
+    *----------------|-------------|----------
+    *  `--bottom-button` | Mixin applied to the button | `{}`
+    *  `--bottom-button-background-color` | Background color of the button | `--accent-color`
+    *  `--bottom-button-text-color` | Color of the text for monochrome | `--dark-theme-text-color`
+    *  `--bottom-button-inner-background` | Background color of the inner border button | `--light-theme-background-color`
+    *
+    *  @demo demo/index.html
+    */
+   class BottomButton extends Polymer.Element {
+     static get is() { return 'bottom-button'; }
 
-      is: 'bottom-button',
+     static get properties() {
+       return {
+         border: {
+           type: Boolean,
+           reflectToAttribute: true,
+           value: false
+         }
+       };
+     }
 
-      properties: {
-        border: {
-          type: Boolean,
-          value: false
-        }
-      },
+     _setClass(border) {
+       return border ? 'border' : 'monochrome';
+     }
+   }
 
-      _setClass: function(border) {
-        return border ? 'border' : 'monochrome';
-      }
-
-    });
+   customElements.define(BottomButton.is, BottomButton);
   </script>
 </dom-module>
