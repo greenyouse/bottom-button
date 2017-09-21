@@ -33,5 +33,5 @@ If you need Polymer 1.X or hybrid support use a 0.1.X release of this element.
 ## Import
 
 ```html
-<link rel="import" href="/bower_components/bottom-nav/bottom-button.html">
+<link rel="import" href="../bower_components/bottom-nav/bottom-button.html">
 ```
