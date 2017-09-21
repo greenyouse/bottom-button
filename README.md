@@ -28,6 +28,8 @@ A full width bottom button for mobile.
 $ bower install greenyouse/bottom-button --save
 ```
 
+If you need Polymer 1.X or hybrid support use a 0.1.X release of this element.
+
 ## Import
 
 ```html
