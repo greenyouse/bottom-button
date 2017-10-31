@@ -6,7 +6,7 @@ A full width bottom button for mobile.
 ```
 <custom-element-demo>
   <template>
-    <script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../iron-demo-helpers/demo-snippet.html">
     <link rel="import" href="demo/sample-content.html">
